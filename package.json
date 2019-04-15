@@ -1,0 +1,7 @@
+{
+    "devDependencies": {
+        "@types/google-apps-script": "0.0.27",
+        "@types/node": "^11.13.4"
+    },
+    "dependencies": {}
+}

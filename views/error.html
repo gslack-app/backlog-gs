@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <?!= css(['app']); ?>
+</head>
+
+<body>
+    <?!= html(['header']); ?>
+    <div class="wrapper">
+        <div>
+            <h1>Oops! Something went awry during your login.</h1>
+            <p><a href="<?= ScriptApp.getService().getUrl() ?>?action=login" target="_top">Login again</a></p>
+        </div>
+    </div>
+    <?!= html(['footer']); ?>
+</body>
+
+</html>
