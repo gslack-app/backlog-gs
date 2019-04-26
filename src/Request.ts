@@ -36,6 +36,7 @@ export default class Request {
         const { apiKey, accessToken, timeout } = this.configure;
         const query: any = apiKey ? { apiKey: apiKey } : {};
         const init: any = {
+            muteHttpExceptions: true,
             method: method.toLowerCase(),
             headers: {}
         };
