@@ -83,5 +83,3 @@ export interface BacklogErrorMessage {
 }
 
 export type BacklogErrorNameType = 'BacklogApiError' | 'BacklogAuthError' | 'UnexpectedError';
-
-export declare namespace global { }

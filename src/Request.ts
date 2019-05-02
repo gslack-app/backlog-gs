@@ -1,5 +1,5 @@
-import * as Error from './Error';
 import { PQ } from './PQ';
+import { BacklogAuthError, BacklogApiError, UnexpectedError } from './Error';
 
 export default class Request {
     constructor(private configure: {
@@ -48,7 +48,7 @@ export default class Request {
         if (params) {
             if (method !== 'GET') {
                 init.contentType = options.contentType == 'application/json' ? 'application/json' : 'application/x-www-form-urlencoded';
-                init.payload = options.contentType == 'application/json' ? JSON.stringify(params) : params;
+                init.payload = options.contentType == 'application/json' ? JSON.stringify(params) : this.toQueryString(params);
             } else {
                 Object.keys(params).forEach(key => query[key] = params[key]);
             }
@@ -74,11 +74,11 @@ export default class Request {
             } else {
                 this.parseJSON(response).then((data: any) => {
                     if (status === 401) {
-                        reject(new Error.BacklogAuthError(response, data));
+                        reject(new BacklogAuthError(response, data));
                     } else {
-                        reject(new Error.BacklogApiError(response, data));
+                        reject(new BacklogApiError(response, data));
                     }
-                }).catch(() => reject(new Error.UnexpectedError(response)));
+                }).catch(() => reject(new UnexpectedError(response)));
             }
         });
     }
@@ -103,9 +103,9 @@ export default class Request {
                 return result;
             }
             if (Array.isArray(value)) {
-                (<any[]>value).forEach(v => result.push(`${key}[]=${v}`));
+                (<any[]>value).forEach(v => result.push(`${key}[]=${encodeURIComponent(v)}`));
             } else {
-                result.push(`${key}=${value}`);
+                result.push(`${key}=${encodeURIComponent(value)}`);
             }
             return result;
         }, []).join('&');
