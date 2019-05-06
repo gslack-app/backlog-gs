@@ -72,13 +72,18 @@ export default class Request {
             if (200 <= status && status < 300) {
                 resolve(response);
             } else {
-                this.parseJSON(response).then((data: any) => {
+                try {
+                    let json = response.getContentText();
+                    let data = JSON.parse(json);
                     if (status === 401) {
                         reject(new BacklogAuthError(response, data));
                     } else {
                         reject(new BacklogApiError(response, data));
                     }
-                }).catch(() => reject(new UnexpectedError(response)));
+                }
+                catch (e) {
+                    reject(new UnexpectedError(response));
+                }
             }
         });
     }
