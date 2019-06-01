@@ -1,6 +1,6 @@
-import OAuth2 from "./OAuth2";
-import * as Entity from './Entity';
-import { Backlog } from "./Backlog";
+import OAuth2 from "./src/OAuth2";
+import * as Entity from './src/Entity';
+import { Backlog } from "./src/Backlog";
 
 const APP_NAME = '»-(¯`·.·´¯)->Backlog<-(¯`·.·´¯)-«';
 

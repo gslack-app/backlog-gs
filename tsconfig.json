@@ -53,7 +53,7 @@
     },
     "include": [
         "src/**/*",
-        "test/**/*",
+        "test/**/*", "App.ts",
     ],
     "exclude": [        
         "node_modules/**/*",
