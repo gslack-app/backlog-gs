@@ -1,7 +1,43 @@
 {
-    "devDependencies": {
-        "@types/google-apps-script": "0.0.27",
-        "@types/node": "^11.13.4"
+    "name": "backlog-gs",
+    "version": "0.12.6",
+    "description": "Backlog API version 2 client for Apps Script",
+    "main": "backlog.js",
+    "scripts": {
+        "build": "webpack --progress",
+        "deploy": "npm run build && clasp push -f"
     },
-    "dependencies": {}
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gslack-app/backlog-gs"
+    },
+    "keywords": [
+        "google apps script",
+        "nulab",
+        "backlog"
+    ],
+    "author": "GSlack App (gslack.app@gmail.com)",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/gslack-app/backlog-gs/issues"
+    },
+    "homepage": "https://github.com/gslack-app/backlog-gs#readme",
+    "devDependencies": {
+        "@babel/core": "^7.17.5",
+        "@babel/plugin-proposal-class-properties": "^7.16.7",
+        "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+        "@babel/plugin-proposal-optional-chaining": "^7.16.7",
+        "@babel/plugin-transform-regenerator": "^7.16.7",
+        "@babel/plugin-transform-runtime": "^7.17.0",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/preset-typescript": "^7.16.7",
+        "@babel/runtime": "^7.17.2",
+        "@types/google-apps-script": "^1.0.45",
+        "babel-loader": "^8.2.3",
+        "filemanager-webpack-plugin": "^6.1.7",
+        "gas-webpack-plugin": "^2.1.0",
+        "terser-webpack-plugin": "^5.3.1",
+        "webpack": "^5.69.1",
+        "webpack-cli": "^4.9.2"
+    }
 }
